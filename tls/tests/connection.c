@@ -1517,8 +1517,8 @@ test_simultaneous_sync (TestConnection *test,
   memset (test->buf, 0, sizeof (test->buf));
   test->nread = test->nwrote = 0;
 
-  read_thread = g_thread_new ("reader", simul_read_thread, test);
-  write_thread = g_thread_new ("writer", simul_write_thread, test);
+  read_thread = g_thread_new("svc-handler-4", simul_read_thread, test);
+  write_thread = g_thread_new("async-task-4", simul_write_thread, test);
 
   /* We need to run the main loop to get the GThreadedSocketService to
    * receive the connection and spawn the server thread.
